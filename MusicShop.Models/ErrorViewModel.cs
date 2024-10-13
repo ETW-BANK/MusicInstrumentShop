@@ -1,4 +1,4 @@
-namespace MusicShop.Models
+namespace Traditional_Cloth_Shop_App.Models
 {
     public class ErrorViewModel
     {

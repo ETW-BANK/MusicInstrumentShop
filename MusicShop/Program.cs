@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using MusicShop.DataAccess.Data;
 using MusicShop.DataAccess.Repository.IRepository;
 using MusicShop.DataAccess.Repository;
+using Microsoft.AspNetCore.Identity;
+using Stripe;
 
 namespace MusicShop
 {
@@ -16,10 +18,19 @@ namespace MusicShop
             var connectionstring = builder.Configuration.GetConnectionString("MusicShopDb");
             builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(connectionstring));
 
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddHttpContextAccessor();
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Set timeout as needed
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             var app = builder.Build();
 
@@ -33,7 +44,7 @@ namespace MusicShop
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
             app.UseRouting();
 
             app.UseAuthorization();

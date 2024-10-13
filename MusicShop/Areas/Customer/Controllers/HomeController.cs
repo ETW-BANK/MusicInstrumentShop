@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using MusicShop.DataAccess.Repository.IRepository;
 using MusicShop.Models;
+using MusicShop.ViewModels;
 using System.Diagnostics;
 using System.Security.Claims;
 
