@@ -27,4 +27,8 @@
     <ProjectReference Include="..\MusicShop.ViewModels\MusicShop.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\product\" />
+  </ItemGroup>
+
 </Project>

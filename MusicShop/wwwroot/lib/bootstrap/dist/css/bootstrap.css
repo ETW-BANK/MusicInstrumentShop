@@ -6543,6 +6543,9 @@ textarea.form-control-lg {
   white-space: nowrap !important;
   border: 0 !important;
 }
+tr {
+    text-align: center !important;
+}
 
 .stretched-link::after {
   position: absolute;
