@@ -14,7 +14,7 @@ using Session = Stripe.Checkout.Session;
 namespace MusicShop.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    //[Authorize]
+    [Authorize]
     public class CartController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

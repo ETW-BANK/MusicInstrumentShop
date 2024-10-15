@@ -31,7 +31,7 @@ namespace MusicShop
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
+            builder.Services.AddRazorPages();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -46,7 +46,8 @@ namespace MusicShop
             app.UseStaticFiles();
             StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
             app.UseRouting();
-
+            app.MapRazorPages();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
