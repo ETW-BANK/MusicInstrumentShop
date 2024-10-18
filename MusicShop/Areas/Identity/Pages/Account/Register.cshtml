@@ -6,7 +6,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<div class="row">
+<div class="row" id="forms">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Create a new account.</h2>
@@ -61,7 +61,12 @@
         </section>
     </div>
 </div>
+<style>
 
+    #forms {
+        background-color:white;
+    }
+</style>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
